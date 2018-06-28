@@ -1,0 +1,43 @@
+.is-horizontal-center {
+  justify-content: center;
+}
+
+.main-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.logo-wrapper {
+  margin: 0 auto;
+}
+
+img.logo {
+  max-height: 150px;
+  margin: 0 auto;
+}
+
+div.form {
+  padding-top: 10px;
+}
+
+.i-agree-wrapper {
+  padding-top: 10px;
+}
+
+#form-submit {
+  width: 100%;
+}
+
+.thank-you {
+  padding-top: 10px;
+}
+
+#error-modal-close-button {
+  width: 100%;
+}
+
+.error-modal-close-button-wrapper {
+  margin-top: 10px;
+}

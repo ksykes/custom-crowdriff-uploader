@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Visit CR HQ</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+  <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+  <div class="main-wrapper">
+    <section class="header">
+      <div class="logo-wrapper is-flex is-horizontal-center">
+        <img class="logo" src="logo.png">
+      </div>
+    </section>
+    <section class="body">
+      <div class="instructions is-flex is-horizontal-center">
+        <h1 class="title is-3">Photo Contest Submission</h1>
+      </div>
+      <div id="form-panel" class="form">
+        <div class="field">
+          <label class="label">Name (required)</label>
+          <div class="control">
+            <input id="input-name" class="input" type="text" placeholder="Your Name">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Email (required)</label>
+          <div class="control">
+            <input id="input-email" class="input" type="email" placeholder="person@example.com">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Phone Number (required)</label>
+          <div class="control">
+            <input id="input-phone" class="input" type="text" placeholder="905-555-1234">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Submission Category (required)</label>
+          <div class="control">
+            <label class="radio">
+              <input type="radio" name="category" value="city-life">
+              City Life
+            </label>
+            <label class="radio">
+              <input type="radio" name="category" value="outdoor-adventure">
+              Outdoor Adventure
+            </label>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Instagram Handle</label>
+          <div class="control">
+            <input id="input-instagram" class="input" type="text" placeholder="@myinsta">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Facebook Handle</label>
+          <div class="control">
+            <input id="input-facebook" class="input" type="text" placeholder="myfacebookusername">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Twitter Handle</label>
+          <div class="control">
+            <input id="input-twitter" class="input" type="text" placeholder="@mytwitter">
+          </div>
+        </div>
+        <div class="field i-agree-wrapper">
+          <div class="control">
+            <label class="checkbox">
+              <input id="input-terms" type="checkbox">
+              I agree to the <a href="#">terms and conditions</a> (required).
+            </label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <input id="input-age" type="checkbox">
+              I am at least 19 years of age (required).
+            </label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <input id="input-resident" type="checkbox">
+              I am a resident of Ontario (required).
+            </label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <label class="checkbox">
+              <input id="input-mailing" type="checkbox">
+              Sign me up to the mailing list</a>
+            </label>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <button id="form-submit" class="button is-link">Next Step: Upload Photo</button>
+          </div>
+        </div>
+      </div>
+      <div id="thank-you-panel" class="thank-you is-flex is-horizontal-center" style="display: none !important;">
+        <h1 id="thank-you-panel-message" class="subtitle is-5">
+          Thank you for your submission!
+        </h1>
+      </div>
+      <div id="error-modal" class="modal">
+        <div id="error-modal-background" class="modal-background"></div>
+        <div class="modal-content">
+          <div class="box">
+            <div>
+              <span>Error!</span>
+            </div>
+            <div>
+              <span id="error-text" class="is-2">Error!</span>
+            </div>
+            <div class="error-modal-close-button-wrapper">
+              <button id="error-modal-close-button" class="button" aria-label="close">Close</button>
+            </div>
+          </div>
+        </div>
+        <button id="error-modal-close" class="modal-close is-large" aria-label="close"></button>
+      </div>
+    </section>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" id="" src="https://upload.crowdriff.com/js/uploader.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
