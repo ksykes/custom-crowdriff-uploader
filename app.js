@@ -17,13 +17,14 @@ function getFormValues() {
   return {
     name: $("#input-name").val(),
     email: $("#input-email").val(),
-    phone: $("#input-phone").val(),
-    category: $("input[name=category]:checked").val(),
+    title: $("#input-title").val(),
+    location: $("#input-location").val(),
+    ageGroup: $("input[name=ageGroup]:checked").val(),
     instagram: $("#input-instagram").val(),
     facebook: $("#input-facebook").val(),
     twitter: $("#input-twitter").val(),
+    description: $("#input-description").val(),
     terms: $("#input-terms").prop('checked') ?  true : false,
-    age: $("#input-age").prop('checked') ? true : false,
     resident: $("#input-resident").prop('checked') ? true : false,
     mailing: $("#input-mailing").prop('checked') ? true : false
   }
@@ -41,13 +42,18 @@ function validateForm() {
     return false;
   }
 
-  if (!values.phone) {
-    showError('Phone Number is a required field.');
+  if (!values.title) {
+    showError('Your work\'s title is required for submission.');
     return false;
   }
 
-  if (!values.category) {
-    showError('Please pick a category for your entry.');
+  if (!values.location) {
+    showError('Your city or town is required for submission.');
+    return false;
+  }
+
+  if (!values.ageGroup) {
+    showError('Please select your age range.');
     return false;
   }
 
@@ -56,13 +62,8 @@ function validateForm() {
     return false;
   }
 
-  if (!values.age) {
-    showError('You must be at least 19 years of age to be eligible.');
-    return false;
-  }
-
   if (!values.resident) {
-    showError('You must be a resident of Ontario to be eligible.');
+    showError('The artist of this submission must be 4-18 years old and a resident of Ontario to be eligible.');
     return false;
   }
 
@@ -80,22 +81,14 @@ function startUploader() {
     showThankYouPanel('Something went wrong. Please refresh this page and try again.');
   }, function(assets) {
     var assetId = assets[0].id;
-    uploader.setAuthorName(values.name, assetId);
+    uploader.setAuthorName(values.title, assetId);
     uploader.setAuthorEmail(values.email, assetId);
 
-    var description = 'Email: ' + values.email + ' |\nPhone: ' + values.phone;
-    if (values.instagram) {
-      description += ' |\nInstagram: ' + values.instagram;
-    }
-    if (values.facebook) {
-      description += ' |\nFacebook: ' + values.facebook;
-    }
-    if (values.twitter) {
-      description += ' |\nTwitter: ' + values.twitter;
-    }
+    var description = `${values.description} — ${values.name}, ${values.location} (Age ${values.ageGroup})`
+
     uploader.setDescription(description, assetId);
 
-    var keywords = [ 'public-uploader', 'my-hamilton-photo-contest-2018', 'category-' + values.category ];
+    var keywords = [ 'public-uploader', 'collector-portal-4245', 'mypandemicstory', 'age-' + values.ageGroup ];
     if (values.mailing) {
       keywords.push('newsletter-ok');
     }
@@ -108,6 +101,7 @@ function startUploader() {
       showThankYouPanel('Something went wrong. Please refresh this page and try again.');
     }, function() {
       console.log('success!');
+      $("#thank-you-panel").addClass('success-message');
       showThankYouPanel('Thank you for your submission!');
     });
   });
@@ -142,7 +136,5 @@ function ready() {
   uploader.init(function(err) {
     console.error('failed to initialize uploader', err);
   }, function() {
-  }, {
-    maxFiles: 1 // optional configuration object
   });
 }

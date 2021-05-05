@@ -1,3 +1,38 @@
+/* GENERAL TYPOGRAPHY */
+
+h1 {
+  text-align: center;
+}
+
+h2, h3 {
+  color: #363636;
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.4rem;
+}
+
+p, ol, ul, ol > li {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #7F2083;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+}
+
+a:hover, a:focus, a:focus-visible, a:focus-within, a:active {
+  border-bottom: 1px solid #363636;
+  transition: all 0.2s ease-in;
+}
+
+/* UPLOADER */
+
 .is-horizontal-center {
   justify-content: center;
 }
@@ -5,8 +40,35 @@
 .main-wrapper {
   max-width: 600px;
   margin: 0 auto;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 20px 10px;
+}
+
+section.header {
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.language {
+  position: absolute;
+  top: -20px;
+  right: 0;
+  margin-top: 5px;
+}
+
+.language a {
+  color: white;
+  font-size: 0.9rem;
+  background: #7F2083;
+  padding: 5px 12px;
+  border-radius: 3px;
+  border-bottom: none;
+}
+
+.language a:hover, .language a:focus, .language a:focus-visible, .language a:focus-within, .language a:active {
+  color: white;
+  background: #711c74;
+  border-bottom: none;
+  transition: all 0.2s ease-in;
 }
 
 .logo-wrapper {
@@ -14,12 +76,70 @@
 }
 
 img.logo {
-  max-height: 150px;
+  max-height: 100px;
   margin: 0 auto;
+}
+
+.instructions {
+  margin-bottom: 1rem;
 }
 
 div.form {
   padding-top: 10px;
+}
+
+div.form-fields {
+  position: relative;
+}
+
+p.required-description {
+  position: absolute;
+  right: 0;
+  margin-top: 0.2rem;
+}
+
+label {
+  position: relative;
+}
+
+label .required-text {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(00 0 0);
+  overflow: hidden;
+}
+
+p.required-description {
+  font-size: 0.8rem;
+  text-align: right;
+  color: gray;
+}
+
+p.required-description::before,
+label.required::after {
+  content: '*';
+  font-size: 0.8rem;
+  color: red;
+  position: relative;
+  top: -0.25rem;
+}
+
+.label-description {
+  display: inline-block;
+  font-weight: normal;
+  font-size: 0.8rem;
+  font-style: italic;
+  margin-bottom: .5rem;
+}
+
+textarea#input-description {
+  height: 6em;
 }
 
 .i-agree-wrapper {
@@ -28,6 +148,7 @@ div.form {
 
 #form-submit {
   width: 100%;
+  background-color: #7F2083;
 }
 
 .thank-you {
@@ -40,4 +161,40 @@ div.form {
 
 .error-modal-close-button-wrapper {
   margin-top: 10px;
+}
+
+/* TERMS & CONDITIONS */
+
+section.terms ol {
+  list-style: upper-roman;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+section.terms ol h4 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+section.terms ol p,
+section.terms ol ul,
+section.terms ol ol {
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+section.terms ol ol {
+  list-style: decimal;
+  margin-left: 2rem;
+}
+
+section.terms ul {
+  list-style-type: disc;
+  margin-left: 2rem;
+}
+
+section.terms .copyright {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
 }
