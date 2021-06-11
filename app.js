@@ -24,7 +24,7 @@ function getFormValues() {
     facebook: $("#input-facebook").val(),
     twitter: $("#input-twitter").val(),
     description: $("#input-description").val(),
-    terms: $("#input-terms").prop('checked') ?  true : false,
+    terms: $("#input-terms").prop('checked') ? true : false,
     resident: $("#input-resident").prop('checked') ? true : false,
     mailing: $("#input-mailing").prop('checked') ? true : false
   }
@@ -72,14 +72,14 @@ function validateForm() {
 
 function startUploader() {
   showThankYouPanel('Saving ...');
-  
+
   var uploader = window.cr__uploader;
   var values = getFormValues();
-  uploader.start(function(err) {
+  uploader.start(function (err) {
     console.error('failed to start uploader', err);
     showError('Something went wrong!');
     showThankYouPanel('Something went wrong. Please refresh this page and try again.');
-  }, function(assets) {
+  }, function (assets) {
     var assetId = assets[0].id;
     uploader.setAuthorName(values.title, assetId);
     uploader.setAuthorEmail(values.email, assetId);
@@ -88,14 +88,14 @@ function startUploader() {
 
     uploader.setDescription(description, assetId);
 
-    var keywords = [ 'public-uploader', 'collector-portal-4245', 'mypandemicstory', 'age-' + values.ageGroup ];
+    var keywords = ['public-uploader', 'collector-portal-4245', 'mypandemicstory', 'age-' + values.ageGroup];
     if (values.mailing) {
       keywords.push('newsletter-ok');
     }
     uploader.setKeywords(keywords, assetId);
 
     // Finish upload
-    uploader.done(function(err) {
+    uploader.done(function (err) {
       console.log('failed to complete uploader', err);
       showError('Something went wrong!');
       showThankYouPanel('Something went wrong. Please refresh this page and try again.');
@@ -124,7 +124,7 @@ $(document).ready(function() {
   });
 
   $("#form-submit").click(function() {
-    if(validateForm()) {
+    if (validateForm()) {
       startUploader();
     }
   });
@@ -133,7 +133,7 @@ $(document).ready(function() {
 function ready() {
   clearInterval(readyInterval);
   var uploader = window.cr__uploader;
-  uploader.init(function(err) {
+  uploader.init(function (err) {
     console.error('failed to initialize uploader', err);
   }, function() {
   });
