@@ -79,10 +79,6 @@ function startUploader() {
     showError('Something went wrong!');
     showThankYouPanel('Something went wrong. Please refresh this page and try again.');
   }, function(assets) {
-    var assetId = assets[0].id;
-    uploader.setAuthorName(values.name, assetId);
-    uploader.setAuthorEmail(values.email, assetId);
-
     var description = 'Email: ' + values.email + ' |\nPhone: ' + values.phone;
     if (values.instagram) {
       description += ' |\nInstagram: ' + values.instagram;
@@ -93,13 +89,18 @@ function startUploader() {
     if (values.twitter) {
       description += ' |\nTwitter: ' + values.twitter;
     }
-    uploader.setDescription(description, assetId);
 
     var keywords = [ 'public-uploader', 'my-hamilton-photo-contest-2018', 'category-' + values.category ];
     if (values.mailing) {
       keywords.push('newsletter-ok');
     }
-    uploader.setKeywords(keywords, assetId);
+
+    assets.map(asset => {
+      uploader.setAuthorName(values.name, asset.id);
+      uploader.setAuthorEmail(values.email, asset.id);
+      uploader.setDescription(description, asset.id);
+      uploader.setKeywords(keywords, asset.id);
+    });
 
     // Finish upload
     uploader.done(function(err) {
@@ -143,6 +144,6 @@ function ready() {
     console.error('failed to initialize uploader', err);
   }, function() {
   }, {
-    maxFiles: 1 // optional configuration object
+    maxFiles: 2 // optional configuration object
   });
 }
