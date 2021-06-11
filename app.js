@@ -80,19 +80,19 @@ function startUploader() {
     showError('Something went wrong!');
     showThankYouPanel('Something went wrong. Please refresh this page and try again.');
   }, function (assets) {
-    var assetId = assets[0].id;
-    uploader.setAuthorName(values.title, assetId);
-    uploader.setAuthorEmail(values.email, assetId);
-
     var description = `${values.description} — ${values.name}, ${values.location} (Age ${values.ageGroup})`
-
-    uploader.setDescription(description, assetId);
 
     var keywords = ['public-uploader', 'collector-portal-4245', 'mypandemicstory', 'age-' + values.ageGroup];
     if (values.mailing) {
       keywords.push('newsletter-ok');
     }
-    uploader.setKeywords(keywords, assetId);
+
+    assets.map(asset => {
+      uploader.setAuthorName(values.title, asset.id);
+      uploader.setAuthorEmail(values.email, asset.id);
+      uploader.setDescription(description, asset.id);
+      uploader.setKeywords(keywords, asset.id);
+    })
 
     // Finish upload
     uploader.done(function (err) {
