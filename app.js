@@ -91,6 +91,8 @@ function startUploader() {
       uploader.setAuthorName(values.title, asset.id);
       uploader.setAuthorEmail(values.email, asset.id);
       uploader.setDescription(description, asset.id);
+      uploader.setCaption(values.description, asset.id);
+      uploader.setLocationLabel(values.location, asset.id);
       uploader.setKeywords(keywords, asset.id);
     })
 
